@@ -1,0 +1,13 @@
+package com.iesam.carnejoven.feature.user.domain;
+
+public class CreateUserUseCase {
+
+    private UserRepository userRepository;
+
+
+    public CreateUserUseCase(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+
+}
