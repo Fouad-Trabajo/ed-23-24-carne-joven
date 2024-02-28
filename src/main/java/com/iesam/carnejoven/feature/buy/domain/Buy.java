@@ -1,6 +1,6 @@
 package com.iesam.carnejoven.feature.buy.domain;
 
-import com.iesam.carnejoven.feature.promotions.domain.Promotion;
+import com.iesam.carnejoven.feature.promotions.domain.models.Promotion;
 import com.iesam.carnejoven.feature.user.domain.User;
 
 public class Buy {

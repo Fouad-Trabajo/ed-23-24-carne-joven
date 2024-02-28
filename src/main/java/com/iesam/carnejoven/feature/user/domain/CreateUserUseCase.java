@@ -10,4 +10,7 @@ public class CreateUserUseCase {
     }
 
 
+    public void execute(User user){
+        userRepository.createUser(user);
+    }
 }

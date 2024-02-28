@@ -10,7 +10,7 @@ public class GetUserUseCase {
         this.userRepository = userRepository;
     }
 
-    public void execute(){
-        
+    public User execute(String nif){
+        return this.userRepository.getUser(nif);
     }
 }

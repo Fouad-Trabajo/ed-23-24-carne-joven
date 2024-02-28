@@ -1,4 +1,4 @@
-package com.iesam.carnejoven.feature.promotions.domain;
+package com.iesam.carnejoven.feature.promotions.domain.models;
 
 public class Promotion {
 
@@ -14,4 +14,6 @@ public class Promotion {
         this.description = description;
         this.disconut = disconut;
     }
+
+    //Al poner los atributos en público y constantes, no hace falta poner getter y setter
 }
