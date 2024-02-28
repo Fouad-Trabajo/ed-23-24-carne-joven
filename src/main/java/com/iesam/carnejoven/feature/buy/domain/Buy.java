@@ -10,8 +10,10 @@ public class Buy {
     public Promotion promotion;
     public User user;
 
-    public Buy(String id, String dateBuy) {
+    public Buy(String id, String dateBuy, Promotion promotion, User user) {
         this.id = id;
         this.dateBuy = dateBuy;
+        this.promotion = promotion;
+        this.user = user;
     }
 }
