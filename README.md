@@ -13,4 +13,4 @@ Se pide (en el examen no se da tan detallado):
  - Crear la feature: “user”: presentation, domain y data. Con los casos de usos: Crear y Obtener un usuario en concreto. Test unitarios: obtener un usuario en concreto. 
  - Crear la feature: “company”: presentation, domain y data. Con los casos de usos: Crear y Obtener una empresa en concreto. Test unitarios: Obtener una empresa en concreto.
  - Crear la feature: “buy”: presentation, domain, data. Con los casos de usos:  crear y obtener un listado de compras. Test unitarios: obtener un listado de compras.
- - Se usará un FileLocalDataSource.
+ - Se usará un FileLocalDataSource para almacenar y recuperar los datos.
