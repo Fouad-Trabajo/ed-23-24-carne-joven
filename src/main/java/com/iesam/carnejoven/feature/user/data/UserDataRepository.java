@@ -1,7 +1,10 @@
 package com.iesam.carnejoven.feature.user.data;
 
+import com.iesam.carnejoven.feature.user.data.local.FileLocalDataSourceUser;
 import com.iesam.carnejoven.feature.user.domain.User;
 import com.iesam.carnejoven.feature.user.domain.UserRepository;
+
+import java.util.ArrayList;
 
 public class UserDataRepository implements UserRepository {
 
@@ -17,13 +20,19 @@ public class UserDataRepository implements UserRepository {
     }
 
 
+    private FileLocalDataSourceUser fileLocalDataSourceUser;
+
+
+
     @Override
     public void createUser(User user) {
-
+    fileLocalDataSourceUser.save(user);
     }
 
     @Override
     public User getUser(String nif) {
-        return null;
+        User user = fileLocalDataSourceUser.obtain();
+        if(user!=null && user.nif.equals(nif));
+        return user;
     }
 }

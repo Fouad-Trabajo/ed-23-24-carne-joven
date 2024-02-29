@@ -1,5 +1,6 @@
 package com.iesam.carnejoven.feature.buy.data;
 
+import com.iesam.carnejoven.feature.buy.data.Local.FileLocalDataSourceBuy;
 import com.iesam.carnejoven.feature.buy.domain.Buy;
 import com.iesam.carnejoven.feature.buy.domain.BuyRepository;
 
@@ -15,14 +16,21 @@ public class BuyDataRepository implements BuyRepository {
         return instance;
     }
 
+    private FileLocalDataSourceBuy fileLocalDataSourceBuy;
 
     @Override
     public void createBuy(Buy buy) {
-
+        fileLocalDataSourceBuy.save(buy);
     }
 
     @Override
     public ArrayList<Buy> getBuys() {
-        return null;
+        ArrayList<Buy> buys = new ArrayList<>();
+        Buy buy = fileLocalDataSourceBuy.obtain();
+        if (buy != null) {
+            buys.add(buy);
+        }
+        return buys;
     }
+
 }

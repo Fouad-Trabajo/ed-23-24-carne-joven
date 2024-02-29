@@ -18,6 +18,6 @@ public class CreatePromotionUseCase {
 
     //Método ejecutar
     public void execute(Promotion promotion){
-        this.promotionRepository.createPromotion();
+        this.promotionRepository.createPromotion(promotion);
     }
 }
