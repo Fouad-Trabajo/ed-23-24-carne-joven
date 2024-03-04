@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class CompanyDataRepository implements CompanyRepository {
 
+    private static FileLocalDataSourceCompany fileLocalDataSourceCompany;
+
     private static CompanyDataRepository instance = null;
 
     public static CompanyDataRepository newInstance() {
         if (instance == null) {
             instance = new CompanyDataRepository();
+            fileLocalDataSourceCompany= new FileLocalDataSourceCompany()
         }
         return instance;
     }
-
-    private FileLocalDataSourceCompany fileLocalDataSourceCompany;
-
 
 
     @Override

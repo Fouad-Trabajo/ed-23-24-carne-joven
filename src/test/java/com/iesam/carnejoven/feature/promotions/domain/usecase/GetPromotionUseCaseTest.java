@@ -23,18 +23,18 @@ class GetPromotionUseCaseTest {
 
     @AfterEach
     void tearDown() {
-        getPromotionUseCase=null;
+        getPromotionUseCase = null;
     }
 
     @Test
-    public void  cuandoLaPromocionEsNulo(){
+    public void cuandoLaPromocionEsNulo() {
         //Given:Declaración de variables
-        String id=",";
-        GetPromotionUseCase getPromotionUseCase= new GetPromotionUseCase(new Stub2PromotionDataRepository());
+        String id = ",";
+        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new Stub2PromotionDataRepository());
 
         //When
-        Promotion result= getPromotionUseCase.execute(id);
-        boolean esNulo= (result==null);
+        Promotion result = getPromotionUseCase.execute(id);
+        boolean esNulo = (result == null);
 
         //Then
         Assertions.assertTrue(esNulo);
@@ -43,14 +43,14 @@ class GetPromotionUseCaseTest {
 
     //Este no le he probado, pero creo que no hace falta o que está mal implementado
     @Test
-    public void  cuandoElIdDeLaPromocionNoCoincide(){
+    public void cuandoElIdDeLaPromocionNoCoincide() {
         //Given:Declaración de variables
-        String id=",";
-        GetPromotionUseCase getPromotionUseCase= new GetPromotionUseCase(new Stub3PromotionDataRepository());
+        String id = ",";
+        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new Stub3PromotionDataRepository());
 
         //When
-        Promotion result= getPromotionUseCase.execute(id);
-        boolean esNulo= (result==null);
+        Promotion result = getPromotionUseCase.execute(id);
+        boolean esNulo = (result == null);
 
         //Then
         Assertions.assertTrue(esNulo);

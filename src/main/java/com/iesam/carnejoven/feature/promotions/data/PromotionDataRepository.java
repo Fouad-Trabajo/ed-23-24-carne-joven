@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 public class PromotionDataRepository implements PromotionRepository {
 
+
+    //Instancia de fichero
+    private static FileLocalDataSourcePromotions fileLocalDataSourcePromotions;
+
     //Instancia de patrón Singleton
     private static PromotionDataRepository instance = null;
 
@@ -15,13 +19,12 @@ public class PromotionDataRepository implements PromotionRepository {
     public static PromotionDataRepository newInstance() {
         if (instance == null) {
             instance = new PromotionDataRepository();
-        }
+            fileLocalDataSourcePromotions= new FileLocalDataSourcePromotions();
+        }   //Inicialización de fichero
+
         return instance;
     }
 
-
-    //Instancia de fichero
-    private FileLocalDataSourcePromotions fileLocalDataSourcePromotions;
 
     @Override
     public void createPromotion(Promotion promotion) {

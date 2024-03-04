@@ -7,16 +7,19 @@ import com.iesam.carnejoven.feature.buy.domain.BuyRepository;
 import java.util.ArrayList;
 
 public class BuyDataRepository implements BuyRepository {
+
+    private static FileLocalDataSourceBuy fileLocalDataSourceBuy;
+
     private static BuyDataRepository instance = null;
 
     public static BuyDataRepository newInstance() {
         if (instance == null) {
             instance = new BuyDataRepository();
-        }
+            fileLocalDataSourceBuy = new FileLocalDataSourceBuy();
+        }   //Inicialización de fichero
         return instance;
     }
 
-    private FileLocalDataSourceBuy fileLocalDataSourceBuy;
 
     @Override
     public void createBuy(Buy buy) {
