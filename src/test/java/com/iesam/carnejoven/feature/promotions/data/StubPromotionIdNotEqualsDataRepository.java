@@ -5,7 +5,12 @@ import com.iesam.carnejoven.feature.promotions.domain.models.Promotion;
 
 import java.util.ArrayList;
 
-public class StubPromotionsDataRepository implements PromotionRepository {
+/**
+ * Es la misma clase que cuando la promoción es nula,
+ * pero la he creado para hacer una distinción en los nombres de los stub
+ */
+
+public class StubPromotionIdNotEqualsDataRepository implements PromotionRepository {
     @Override
     public void createPromotion(Promotion promotion) {
 
@@ -18,10 +23,12 @@ public class StubPromotionsDataRepository implements PromotionRepository {
 
     @Override
     public Promotion getPromotion(String id) {
+        if("1".equals(id)){
+            return new Promotion("1","Oferta","Ofertón","10%");
+        }
         return null;
     }
 
-    //Solo me hace falta este, pero debo implementar todos los métodos de una interfaz
     @Override
     public ArrayList<Promotion> getPromotions() {
         return null;

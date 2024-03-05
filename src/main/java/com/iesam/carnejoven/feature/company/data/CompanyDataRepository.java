@@ -15,7 +15,7 @@ public class CompanyDataRepository implements CompanyRepository {
     public static CompanyDataRepository newInstance() {
         if (instance == null) {
             instance = new CompanyDataRepository();
-            fileLocalDataSourceCompany= new FileLocalDataSourceCompany()
+            fileLocalDataSourceCompany= new FileLocalDataSourceCompany();
         }
         return instance;
     }

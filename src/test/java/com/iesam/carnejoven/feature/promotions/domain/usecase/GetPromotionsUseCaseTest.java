@@ -1,6 +1,7 @@
 package com.iesam.carnejoven.feature.promotions.domain.usecase;
 
-import com.iesam.carnejoven.feature.promotions.data.StubPromotionsDataRepository;
+import com.iesam.carnejoven.feature.promotions.data.StubPromotionsNotNullDataRepository;
+import com.iesam.carnejoven.feature.promotions.data.StubPromotionsNullDataRepository;
 import com.iesam.carnejoven.feature.promotions.domain.models.Promotion;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -8,8 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GetPromotionsUseCaseTest {
 
@@ -21,27 +20,35 @@ class GetPromotionsUseCaseTest {
 
     @AfterEach
     void tearDown() {
-        getPromotionsUseCase=null;
+        getPromotionsUseCase = null;
     }
 
-    /**
-     * Aquí van los test, pero no se sobre que errores hacerlos
-     */
+
     @Test
-    public void  cuandoLaListaPromocionEsIgualANulo(){
+    public void cuandoLaListaPromocionEsIgualANulo_estaVacia() {
         //Given:Declaración de variables
-        GetPromotionsUseCase getPromotionsUseCase= new GetPromotionsUseCase(new StubPromotionsDataRepository());
+        GetPromotionsUseCase getPromotionsUseCase = new GetPromotionsUseCase(new StubPromotionsNullDataRepository());
 
         //When
-        ArrayList<Promotion> result=getPromotionsUseCase.execute();
-        boolean esNulo= (result ==null);
+        ArrayList<Promotion> result = getPromotionsUseCase.execute();
+        boolean esNulo = (result == null);
 
         //Then
         Assertions.assertTrue(esNulo);
-
     }
 
+    @Test
+    public void cuandoLaListaEstaLlena() {
+        //Given:Declaración de variables
+        GetPromotionsUseCase getPromotionsUseCase = new GetPromotionsUseCase(new StubPromotionsNotNullDataRepository());
+        ArrayList<Promotion> promotions = new ArrayList<>();
+        //When
+        ArrayList<Promotion> result = getPromotionsUseCase.execute();
+        boolean notNull = (result == promotions);
 
+        //Then
+        Assertions.assertTrue(notNull);
+    }
 
 
 }

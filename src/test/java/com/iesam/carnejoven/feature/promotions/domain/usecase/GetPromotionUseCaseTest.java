@@ -1,17 +1,13 @@
 package com.iesam.carnejoven.feature.promotions.domain.usecase;
 
-import com.iesam.carnejoven.feature.promotions.data.Stub2PromotionDataRepository;
-import com.iesam.carnejoven.feature.promotions.data.Stub3PromotionDataRepository;
-import com.iesam.carnejoven.feature.promotions.data.StubPromotionsDataRepository;
+import com.iesam.carnejoven.feature.promotions.data.StubPromotionIdNotEqualsDataRepository;
+import com.iesam.carnejoven.feature.promotions.data.StubPromotionNullDataRepository;
+import com.iesam.carnejoven.feature.promotions.data.StubPromotionIdEqualsDataRepository;
 import com.iesam.carnejoven.feature.promotions.domain.models.Promotion;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GetPromotionUseCaseTest {
 
@@ -27,10 +23,10 @@ class GetPromotionUseCaseTest {
     }
 
     @Test
-    public void cuandoLaPromocionEsNulo() {
+    public void cuandoLaPromocionEsNulo_laPromocionNoExiste_entoncesRetornarNull() {
         //Given:Declaración de variables
         String id = ",";
-        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new Stub2PromotionDataRepository());
+        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new StubPromotionNullDataRepository());
 
         //When
         Promotion result = getPromotionUseCase.execute(id);
@@ -38,22 +34,41 @@ class GetPromotionUseCaseTest {
 
         //Then
         Assertions.assertTrue(esNulo);
+        //Es true porque la variable "result" es null(quiere decir que no existe objeto Promocion)
+    }
+
+
+    @Test
+    public void cuandoLaPromocionExiste_PeroElIdDeLaPromocionNOCoincideConElIdQueBuscamos_entoncesRetornarNull() {
+        //Given:Declaración de variables
+        String id = "2";
+        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new StubPromotionIdNotEqualsDataRepository());
+
+        //When
+        Promotion result = getPromotionUseCase.execute(id);
+        boolean noCoincide = (result != null && result.id.equals(id));
+
+        //Then
+        Assertions.assertFalse(noCoincide);
+
 
     }
 
-    //Este no le he probado, pero creo que no hace falta o que está mal implementado
+
     @Test
-    public void cuandoElIdDeLaPromocionNoCoincide() {
-        //Given:Declaración de variables
-        String id = ",";
-        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new Stub3PromotionDataRepository());
+    public void cuandoLaPromocionExiste_ElIdDeLaPromocionCoincideConElIdQueBuscamos_entoncesRetornarElObjetoPromocion() {
+        //Given: Declaración de variables
+        String id = "1";
+        GetPromotionUseCase getPromotionUseCase = new GetPromotionUseCase(new StubPromotionIdEqualsDataRepository());
+
 
         //When
+
         Promotion result = getPromotionUseCase.execute(id);
-        boolean esNulo = (result == null);
+        boolean coincide = (result != null && result.id.equals(id));
 
         //Then
-        Assertions.assertTrue(esNulo);
-
+        Assertions.assertTrue(coincide);
+        //Es true porque la variable "coincide" no es null (existe objeto) y además coincide
     }
 }

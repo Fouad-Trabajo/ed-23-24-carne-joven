@@ -5,7 +5,7 @@ import com.iesam.carnejoven.feature.promotions.domain.models.Promotion;
 
 import java.util.ArrayList;
 
-public class Stub3PromotionDataRepository implements PromotionRepository {
+public class StubPromotionsNotNullDataRepository implements PromotionRepository {
     @Override
     public void createPromotion(Promotion promotion) {
 
@@ -21,8 +21,10 @@ public class Stub3PromotionDataRepository implements PromotionRepository {
         return null;
     }
 
+
     @Override
     public ArrayList<Promotion> getPromotions() {
-        return null;
+        ArrayList<Promotion> promotions= new ArrayList<>();
+        return promotions;
     }
 }
