@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileLocalDataSourcePromotions {
@@ -33,30 +34,18 @@ public class FileLocalDataSourcePromotions {
     }
 
 
-    public Promotion obtain() {
-        try {
-            File myObj = new File(nameFile);
-            if (!myObj.exists()) {
-                myObj.createNewFile();
+    public Promotion obtain(String id) {
+        List<Promotion> promotions = obtainAll(); // Usa el método obtainAll para obtener todas las promociones.
+        for (Promotion promotion : promotions) {
+            if (promotion.id.equals(id)) {
+                return promotion; // Devuelve la promoción específica si el ID coincide.
             }
-            Scanner myReader = new Scanner(myObj);
-            if (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                myReader.close();
-                return gson.fromJson(data, type);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Ha ocurrido un error al obtener el listado.");
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            System.out.println("Ha ocurrido un error al crear el fichero.");
-            throw new RuntimeException(e);
         }
-        return null;
+        return null; // Devuelve null si no se encuentra la promoción con el ID dado.
     }
 
-    public void deletePromotionById(String id) {
+
+    public void deleteById(String id) {
         ArrayList<Promotion> promotions = obtainAll(); // Obtener todas las promociones.
         // Utiliza removeIf para eliminar la promoción que coincida con el ID proporcionado.
         boolean isRemoved = promotions.removeIf(promotion -> promotion.id.equals(id));

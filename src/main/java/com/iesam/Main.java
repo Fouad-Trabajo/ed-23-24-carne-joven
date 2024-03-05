@@ -14,9 +14,13 @@ public class Main {
                 "ahorro de dinero","20%");
         Promotion newPromotion2= new Promotion("@46","ahorrro",
                 "ahorro de dineros","20%");
+        Promotion newPromotion3= new Promotion("@47","ahorrro",
+                "ahorro de dineros","20%");
         //PromotionPresentation.createPromotion(newPromotion1);
         //PromotionPresentation.createPromotion(newPromotion2);
+        //PromotionPresentation.createPromotion(newPromotion3);
 
+        //PromotionPresentation.printPromotion("@45");
         //PromotionPresentation.printPromotions();
         //PromotionPresentation.deletePromotion("@46");
         //PromotionPresentation.deletePromotion("@46");

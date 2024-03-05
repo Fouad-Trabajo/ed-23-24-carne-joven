@@ -33,19 +33,15 @@ public class PromotionDataRepository implements PromotionRepository {
 
     @Override
     public void deletePromotion(String id) {
-        fileLocalDataSourcePromotions.deletePromotionById(id);
+        fileLocalDataSourcePromotions.deleteById(id);
     }
 
     @Override
     public Promotion getPromotion(String id) {
-        ArrayList<Promotion> promotions = fileLocalDataSourcePromotions.obtainAll(); // Obtener todas las promociones.
-        for (Promotion promotion : promotions) {
-            if (promotion.id.equals(id)) {
-                return promotion; // Devolver la promoción si coincide con el ID.
-            }
-        }
-        return null; // Devolver null si no se encuentra ninguna coincidencia.
+        return fileLocalDataSourcePromotions.obtain(id);
     }
+
+
 
 
     @Override
