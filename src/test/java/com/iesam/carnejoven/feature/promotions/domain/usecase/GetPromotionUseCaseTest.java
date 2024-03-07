@@ -50,7 +50,8 @@ class GetPromotionUseCaseTest {
 
         //Then
         Assertions.assertFalse(noCoincide);
-
+        //No hace comprobar si el objeto es null
+        //Puedo craer un StubFactory para
 
     }
 
