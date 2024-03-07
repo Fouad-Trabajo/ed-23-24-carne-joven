@@ -18,11 +18,7 @@ public class StubPromotionIdEqualsDataRepository implements PromotionRepository 
 
     @Override
     public Promotion getPromotion(String id) {
-        //Simulación de encontrar una promoción con el id que buscamos
-        if("1".equals(id)){
-            return new Promotion("1","Oferta","Ofertón","10%");
-        }
-        return null;
+        return StubFactory.getPromotion();
     }
 
     @Override

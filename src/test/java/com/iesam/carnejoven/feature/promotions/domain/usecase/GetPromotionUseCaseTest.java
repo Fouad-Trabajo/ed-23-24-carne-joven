@@ -1,5 +1,6 @@
 package com.iesam.carnejoven.feature.promotions.domain.usecase;
 
+import com.iesam.carnejoven.feature.promotions.data.StubFactory;
 import com.iesam.carnejoven.feature.promotions.data.StubPromotionIdNotEqualsDataRepository;
 import com.iesam.carnejoven.feature.promotions.data.StubPromotionNullDataRepository;
 import com.iesam.carnejoven.feature.promotions.data.StubPromotionIdEqualsDataRepository;
@@ -71,5 +72,23 @@ class GetPromotionUseCaseTest {
         //Then
         Assertions.assertTrue(coincide);
         //Es true porque la variable "coincide" no es null (existe objeto) y además coincide
+    }
+
+
+    @Test
+    public void cuandoTodoEstaOkEntoncesDevuleveElModelo() {
+        //Given
+        Promotion promotion = StubFactory.getPromotion();
+        getPromotionUseCase = new GetPromotionUseCase(new StubPromotionIdEqualsDataRepository());
+
+        //when
+        Promotion result = getPromotionUseCase.execute("@145");
+
+        //Then
+        Assertions.assertEquals(promotion.id, result.id);
+        Assertions.assertEquals(promotion.title, result.title);
+        Assertions.assertEquals(promotion.description, result.description);
+        Assertions.assertEquals(promotion.disconut, result.disconut);
+
     }
 }

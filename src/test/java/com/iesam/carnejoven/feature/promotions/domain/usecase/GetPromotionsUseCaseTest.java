@@ -37,14 +37,16 @@ class GetPromotionsUseCaseTest {
         Assertions.assertTrue(esNulo);
     }
 
+    //Esto sigue estando mal
     @Test
     public void cuandoLaListaEstaLlena() {
         //Given:Declaración de variables
         GetPromotionsUseCase getPromotionsUseCase = new GetPromotionsUseCase(new StubPromotionsNotNullDataRepository());
         ArrayList<Promotion> promotions = new ArrayList<>();
+
         //When
         ArrayList<Promotion> result = getPromotionsUseCase.execute();
-        boolean notNull = (result == promotions);
+        boolean notNull = (result.equals(promotions));
 
         //Then
         Assertions.assertTrue(notNull);
